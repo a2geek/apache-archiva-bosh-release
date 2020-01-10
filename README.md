@@ -13,3 +13,9 @@ bosh create-release --force
 bosh upload-release
 bosh -d archiva deploy manifest.yml
 ```
+
+For those used to `make` the delete/deploy sequences are just:
+
+```
+make rmdev dev
+```
