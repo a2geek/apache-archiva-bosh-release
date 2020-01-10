@@ -61,8 +61,8 @@
     <Call name="addConnector">
       <Arg>
           <New class="org.eclipse.jetty.server.nio.SelectChannelConnector">
-            <Set name="host"><SystemProperty name="jetty.host"/></Set>
-            <Set name="port"><SystemProperty name="jetty.port"/></Set>
+            <Set name="host"></Set>
+            <Set name="port">80</Set>
             <Set name="maxIdleTime">30000</Set>
             <Set name="Acceptors">2</Set>
             <Set name="statsOn">false</Set>
@@ -139,22 +139,11 @@
       <Arg>
         <New class="org.eclipse.jetty.deploy.ContextDeployer">
           <Set name="contexts"><Ref id="Contexts"/></Set>
-          <Set name="configurationDir"><SystemProperty name="jetty.contextDir"/></Set>
+          <Set name="configurationDir">/var/vcap/jobs/archiva/config/contexts</Set>
           <Set name="scanInterval">1</Set>
         </New>
       </Arg>
     </Call>
-    <!--
-    <Configure class="org.eclipse.jetty.webapp.WebAppContext">
-
-      <Set name="contextPath">/</Set>
-      <Set name="war"><SystemProperty name="jetty.home" default="."/>/apps/archiva</Set>
-
-      <Set name="extractWAR">false</Set>
-      <Set name="copyWebDir">false</Set>
-
-    </Configure>
-    -->
 
     <!-- =========================================================== -->
     <!-- Configure the webapp deployer.                              -->
@@ -173,7 +162,7 @@
       <Arg>
         <New class="org.eclipse.jetty.deploy.WebAppDeployer">
           <Set name="contexts"><Ref id="Contexts"/></Set>
-          <Set name="webAppDir"><SystemProperty name="jetty.webAppDir"/></Set>
+          <Set name="webAppDir">/var/vcap/jobs/archiva/packages/apache-archiva/apps</Set>
             <Set name="parentLoaderPriority">false</Set>
             <Set name="extract">true</Set>
             <Set name="allowDuplicates">false</Set>
@@ -192,7 +181,7 @@
     <!-- <Ref id="RequestLog"> -->
     <!--   <Set name="requestLog"> -->
     <!--     <New id="RequestLogImpl" class="org.eclipse.jetty.server.NCSARequestLog"> -->
-    <!--       <Set name="filename">erb: p("jetty.logs") /request-yyyy_mm_dd.log</Set> -->
+    <!--       <Set name="filename">/var/vcap/sys/logs/archiva/request-yyyy_mm_dd.log</Set> -->
     <!--       <Set name="filenameDateFormat">yyyyMMdd</Set> -->
     <!--       <Set name="retainDays">90</Set> -->
     <!--       <Set name="append">true</Set> -->
@@ -329,7 +318,7 @@
     <Arg>
       <New class="org.apache.tomcat.jdbc.pool.DataSource">
         <Set name="driverClassName">org.apache.derby.jdbc.EmbeddedDriver</Set>
-        <Set name="url">jdbc:derby:<SystemProperty name="jetty.databases"/>/users;create=true</Set>
+        <Set name="url">jdbc:derby:/var/vcap/store/archiva/data/databases/users;create=true</Set>
         <Set name="username">sa</Set>
         <Set name="maxActive">20</Set>
         <Set name="removeAbandoned">true</Set>
@@ -347,7 +336,7 @@
     <Arg>
       <New class="org.apache.tomcat.jdbc.pool.DataSource">
         <Set name="driverClassName">org.apache.derby.jdbc.EmbeddedDriver</Set>
-        <Set name="url">jdbc:derby:<SystemProperty name="jetty.databases"/>/users</Set>
+        <Set name="url">jdbc:derby:/var/vcap/store/archiva/data/databases/users</Set>
         <Set name="username">sa</Set>
       </New>
     </Arg>
