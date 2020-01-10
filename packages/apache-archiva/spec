@@ -1,0 +1,7 @@
+---
+name: apache-archiva
+
+dependencies: []
+
+files:
+- apache-archiva-2.2.4-bin.tar.gz

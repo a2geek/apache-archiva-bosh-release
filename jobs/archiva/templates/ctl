@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -eu
+
+export JOB_BASE=/var/vcap/jobs/archiva
+export PACKAGE_BASE=${JOB_BASE}/packages/apache-archiva
+export ARCHIVA_DATA=/var/vcap/store/archiva
+
+source ${JOB_BASE}/packages/openjdk-8/bosh/runtime.env
+
+# We want all JAR files _except_ for the wrapper.
+export CLASSPATH=$(find ${PACKAGE_BASE}/lib -name "*.jar" -a ! -name "wrapper.jar" | tr "\n" ":")
+
+JAVA_OPTS=()
+JAVA_OPTS+=("-Djetty.port=80")
+JAVA_OPTS+=("-Djetty.host=")
+JAVA_OPTS+=("-Dappserver.home=${PACKAGE_BASE}")
+JAVA_OPTS+=("-Dappserver.base=${PACKAGE_BASE}")
+JAVA_OPTS+=("-Djetty.home=${PACKAGE_BASE}")
+JAVA_OPTS+=("-Djetty.contextDir=${PACKAGE_BASE}/contexts")
+JAVA_OPTS+=("-DAsyncLoggerConfig.WaitStrategy=Block")
+JAVA_OPTS+=("-Darchiva.repositorySessionFactory.id=jcr")
+JAVA_OPTS+=("-Darchiva.cassandra.configuration.file=${ARCHIVA_DATA}/conf/archiva-cassandra.properties")
+JAVA_OPTS+=("-Djetty.webAppDir=${PACKAGE_BASE}/apps")
+JAVA_OPTS+=("-Djava.io.tmpdir=${ARCHIVA_DATA}/temp")
+JAVA_OPTS+=("-Djetty.databases=${ARCHIVA_DATA}/databases")
+
+# user.home => .m2 folder
+# appserver.base => %/conf/{shared,common}.xml
+#                   ${appserver.base}/conf/security.properties
+
+echo 
+echo "Starting Archiva now"
+echo "JAVA_OPTS => '${JAVA_OPTS[@]}'"
+echo "CLASSPATH => '${CLASSPATH}'"
+echo 
+
+# Working directory is where data is stored?
+cd ${ARCHIVA_DATA}
+java "${JAVA_OPTS[@]}" org.eclipse.jetty.start.Main ${JOB_BASE}/config/jetty.xml

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eu
+
+export ARCHIVA_BASE=/var/vcap/store/archiva
+
+mkdir -p ${ARCHIVA_BASE}/{logs,data,temp,conf}
+
+cp -R /var/vcap/jobs/archiva/packages/apache-archiva/conf ${ARCHIVA_BASE}
+
+chown vcap.vcap ${ARCHIVA_BASE}/*

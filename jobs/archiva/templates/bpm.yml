@@ -1,0 +1,10 @@
+# /var/vcap/jobs/archiva/config/bpm.yml
+processes:
+- name: archiva
+  executable: /var/vcap/jobs/archiva/bin/ctl
+
+  ephemeral_disk: true
+  persistent_disk: true
+
+  capabilities:
+  - NET_BIND_SERVICE

@@ -1,0 +1,5 @@
+check process archiva
+  with pidfile /var/vcap/sys/run/bpm/archiva/archiva.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start archiva"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop archiva"
+  group vcap
