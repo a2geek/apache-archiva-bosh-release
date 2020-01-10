@@ -139,7 +139,7 @@
       <Arg>
         <New class="org.eclipse.jetty.deploy.ContextDeployer">
           <Set name="contexts"><Ref id="Contexts"/></Set>
-          <Set name="configurationDir">/var/vcap/jobs/archiva/config/contexts</Set>
+          <Set name="configurationDir">/var/vcap/jobs/archiva/contexts</Set>
           <Set name="scanInterval">1</Set>
         </New>
       </Arg>

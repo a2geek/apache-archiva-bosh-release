@@ -2,10 +2,11 @@
 name: archiva
 
 templates:
-  bpm.yml:    config/bpm.yml
-  jetty.xml:  config/jetty.xml
-  pre-start:  bin/pre-start
-  ctl:        bin/ctl
+  ctl:          bin/ctl
+  pre-start:    bin/pre-start
+  bpm.yml:      config/bpm.yml
+  jetty.xml:    config/jetty.xml
+  archiva.xml:  contexts/archiva.xml
 
 packages:
 - apache-archiva
