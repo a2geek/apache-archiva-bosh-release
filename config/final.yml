@@ -3,5 +3,5 @@ blobstore:
   provider: local
   options:
     blobstore_path: /tmp/blobs
-final_name: apache-archiva-bosh
+final_name: apache-archiva
 
