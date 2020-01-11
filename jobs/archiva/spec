@@ -2,12 +2,18 @@
 name: archiva
 
 templates:
-  ctl:          bin/ctl
-  pre-start:    bin/pre-start
-  bpm.yml:      config/bpm.yml
-  jetty.xml:    config/jetty.xml
-  archiva.xml:  contexts/archiva.xml
+  ctl:              bin/ctl
+  pre-start:        bin/pre-start
+  bpm.yml:          config/bpm.yml
+  jetty.xml:        config/jetty.xml
+  starter.xml.erb:  config/starter.xml
+  archiva.xml:      contexts/archiva.xml
 
 packages:
 - apache-archiva
 - openjdk-8
+
+properties:
+  archiva.base_url:
+    description: This is the baseUrl that Redback will allow and not assume a CSRF attack. Use it when a proxy forwards traffic to the web server.
+    sample: https://repo.mycompany.com

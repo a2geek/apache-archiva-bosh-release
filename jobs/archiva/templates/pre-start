@@ -9,3 +9,9 @@ mkdir -p ${ARCHIVA_BASE}/{logs,data,temp,conf}
 cp -R /var/vcap/jobs/archiva/packages/apache-archiva/conf ${ARCHIVA_BASE}
 
 chown -R vcap.vcap ${ARCHIVA_BASE}
+
+# only copy base config if configuration file hasn't changed
+if cmp --silent /var/vcap/jobs/archiva/packages/apache-archiva/conf/archiva.xml /var/vcap/store/archiva/conf/archiva.xml
+then
+    cp /var/vcap/jobs/archiva/config/starter.xml /var/vcap/store/archiva/conf/archiva.xml
+fi

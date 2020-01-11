@@ -1,0 +1,6 @@
+# Patch in the base url for Redback to know this is not a CSRF attack
+# > WARN  org.apache.archiva.redback.rest.services.interceptors.RequestValidationInterceptor [] - HTTP Header check failed. Assuming CSRF attack.
+---
+- type: replace
+  path: /instance_groups/name=archiva/jobs/name=archiva/properties/archiva?/base_url?
+  value: ((archiva.base_url))
