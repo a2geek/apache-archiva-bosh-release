@@ -13,7 +13,6 @@ rmdev:
 
 release:
 	bosh create-release --force --tarball $(PWD)/$(RELEASE).tgz
-	sha1sum $(PWD)/$(RELEASE).tgz
 
 final-release:
 	last_tag=$$(git describe --tags --abbrev=0); \
@@ -21,5 +20,6 @@ final-release:
 	then \
 		echo "Nothing to do."; \
 	else \
-		bosh create-release --final --version=$${last_tag}; \
+		bosh create-release --final --version=$${last_tag} --tarball=$(RELEASE).tgz; \
+		sha1sum $(PWD)/$(RELEASE).tgz; \
 	fi
