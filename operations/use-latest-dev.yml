@@ -1,7 +1,7 @@
 # Used for development, allowing you to upload the release.
 ---
 - type: replace
-  path: /releases/name=apache-arciva
+  path: /releases/name=apache-archiva
   value:
     name: apache-archiva
     version: latest

@@ -6,7 +6,8 @@ help:
 dev:
 	bosh create-release --force
 	bosh upload-release
-	bosh -n -d archiva deploy manifest.yml
+	bosh -n -d archiva deploy manifest.yml \
+	     -o operations/use-latest-dev.yml
 
 rmdev:
 	bosh -n -d archiva delete-deployment
