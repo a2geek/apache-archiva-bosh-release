@@ -1,0 +1,23 @@
+name: apache-archiva
+version: v1
+commit_hash: 96546ad
+uncommitted_changes: false
+jobs:
+- name: archiva
+  version: 361ecface40c0bc3e2676dd4199f43ded27eab5381980b3874b611da7eb6d3be
+  fingerprint: 361ecface40c0bc3e2676dd4199f43ded27eab5381980b3874b611da7eb6d3be
+  sha1: sha256:3da55545cd12401e7b4a7ec6c5d1443e5cb6933bb17803b0f30ef148b710cd04
+  packages:
+  - apache-archiva
+  - openjdk-8
+packages:
+- name: apache-archiva
+  version: ca44601ecd76890a86c7138f4017c477596f0d2729f09f3726e936e90ffb5fbd
+  fingerprint: ca44601ecd76890a86c7138f4017c477596f0d2729f09f3726e936e90ffb5fbd
+  sha1: sha256:baac1e73463d1e1a2b4a481f188736e826388ffb69010fa019f0b28b6cd9c8a6
+  dependencies: []
+- name: openjdk-8
+  version: a512bdec1240e3002aa3a2ba61302f3a594d1d662867da00fbad67a4056557ff
+  fingerprint: a512bdec1240e3002aa3a2ba61302f3a594d1d662867da00fbad67a4056557ff
+  sha1: sha256:23f99cb136da1de601dcfc5792ba5e8e332ee01f50c6add097bcff6614f5c0b1
+  dependencies: []
