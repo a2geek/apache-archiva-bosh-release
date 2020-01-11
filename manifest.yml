@@ -3,7 +3,7 @@ name: archiva
 
 releases:
 - name: apache-archiva
-  version: "v1"
+  version: "v2"
   url: "https://github.com/a2geek/apache-archiva-bosh-release/releases/download/v2/apache-archiva-bosh-release.tgz"
   sha1: "fbf72f4260bbf9a88657124769f32333d67dda6e"
 - name: "bpm"
