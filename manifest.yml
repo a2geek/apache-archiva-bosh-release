@@ -4,8 +4,8 @@ name: archiva
 releases:
 - name: apache-archiva
   version: "v1"
-  url: "https://github.com/a2geek/apache-archiva-bosh-release/releases/download/v1/apache-archiva-bosh-release.tgz"
-  sha1: "2d980e79e1f92f884ba336d0df57196b0791aa75"
+  url: "https://github.com/a2geek/apache-archiva-bosh-release/releases/download/v2/apache-archiva-bosh-release.tgz"
+  sha1: "fbf72f4260bbf9a88657124769f32333d67dda6e"
 - name: "bpm"
   version: "1.1.6"
   url: "https://bosh.io/d/github.com/cloudfoundry/bpm-release?v=1.1.6"
