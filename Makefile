@@ -1,7 +1,7 @@
 RELEASE=apache-archiva-bosh-release
 
 help:
-	@echo Please specify valid target: dev, rmdev, release final-release
+	@echo Please specify valid target: dev, rmdev, release, final-release
 
 dev:
 	bosh create-release --force
@@ -16,10 +16,10 @@ release:
 	sha1sum $(PWD)/$(RELEASE).tgz
 
 final-release:
-	last_tag=$(git describe --abbrev=0)
-	if grep "version: ${last_tag}" releases/$(RELEASE)/index.yml > /dev/null
-	then
-		echo "Nothing to do."
-	else
-		bosh create-release --final --version=${last_tag}
+	last_tag=$$(git describe --tags --abbrev=0); \
+	if grep "version: $${last_tag}" releases/$(RELEASE)/index.yml > /dev/null; \
+	then \
+		echo "Nothing to do."; \
+	else \
+		bosh create-release --final --version=$${last_tag}; \
 	fi
