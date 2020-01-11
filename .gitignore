@@ -12,3 +12,6 @@ releases/**/*.tgz
 *~
 *#
 #*
+
+apache-archiva-bosh-release.tgz
+
