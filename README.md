@@ -31,6 +31,29 @@ archiva:
   base_url: http(s)://...
 ```
 
+## Post-deployment
+
+Note that post deployment, the `guest` user needs to be enabled as a repository observer. Otherwise Archiva will require authentication. 
+
+To do this, log into Archiva > Manage (Users) > Click the edit button for `guest` > Click "Edit Roles" > Check Repository Observer > Click Update button.
+
+## Maven configuration
+
+Just a sample; search if you need more details!
+
+```
+$ cat ~/.m2/settings.xml
+<settings>
+  <mirrors>
+    <mirror>
+      <id>archiva.default</id>
+      <url>http://<archiva-server>/repository/internal/</url>
+      <mirrorOf>external:*</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>
+```
+
 # Development
 
 For those used to `make` the delete/deploy sequences are just:
