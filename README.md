@@ -1,5 +1,7 @@
 # Apache Archiva BOSH Release
 
+[![GitHub release](https://img.shields.io/github/v/release/a2geek/apache-archiva-bosh-release)](https://github.com/a2geek/apache-archiva-bosh-release/releases/latest)
+
 This is a BOSH Release to deploy [Apache Archiva](http://archiva.apache.org/).
 
 ## Status
