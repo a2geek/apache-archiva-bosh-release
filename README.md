@@ -6,7 +6,7 @@ This is a BOSH Release to deploy [Apache Archiva](http://archiva.apache.org/).
 
 ## Status
 
-Works! Minor configuration capabilities, as most configuration seem to be in the user interface.
+Works! Minor configuration capabilities, as most configuration seems to be in the user interface.
 
 # Deployment
 
@@ -20,8 +20,8 @@ bosh -d archiva deploy manifest.yml
 
 | Operations File | Description |
 | --- | --- |
-| `operations/set-base-url.yml` | Used when Archiva is behind something like a HAProxy. If the URL or port does not match, Archiva assumes this is an attach and does not respond. |
-| `operations/set-disk-size.yml` | Used to set a different disk size form the arbitratily chosen size of 10GiB. |
+| `operations/set-base-url.yml` | Used when Archiva is behind something like a HAProxy. If the URL or port does not match, Archiva assumes this is an attack and does not respond. |
+| `operations/set-disk-size.yml` | Used to set a different disk size from the arbitratily chosen size of 10GiB. |
 
 ## Configuration variables
 
@@ -35,7 +35,7 @@ archiva:
 
 ## Post-deployment
 
-Note that post deployment, the `guest` user needs to be enabled as a repository observer. Otherwise Archiva will require authentication. 
+Note that post deployment, the `guest` user needs to be enabled as a repository observer. Otherwise Archiva will require authentication.
 
 To do this, log into Archiva > Manage (Users) > Click the edit button for `guest` > Click "Edit Roles" > Check Repository Observer > Click Update button.
 
